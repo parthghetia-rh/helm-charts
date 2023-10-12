@@ -8,4 +8,4 @@ name: argocd-app-of-app
 sources:
 - https://github.com/parthghetia-rh/helm-charts/argocd-app-of-app-chart
 type: application
-version: 0.2.6
+version: 0.2.5
