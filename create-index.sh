@@ -1,0 +1,1 @@
+helm repo index --url https://github.com/parthghetia-rh/spoke-cluster-config.git .
