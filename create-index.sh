@@ -1,1 +1,1 @@
-helm repo index --url https://github.com/parthghetia-rh/spoke-cluster-config.git .
+helm repo index --url  https://parthghetia-rh.github.io/helm-charts/ .
