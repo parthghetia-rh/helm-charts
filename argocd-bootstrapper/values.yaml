@@ -1,0 +1,6 @@
+openshift-gitops:
+  enabled: true
+  
+terminal:
+  enabled: true
+

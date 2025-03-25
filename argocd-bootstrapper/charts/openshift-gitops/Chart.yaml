@@ -1,0 +1,4 @@
+apiVersion: v2
+name: openshift-gitops
+description: Openshift-gitops config
+version: 0.1.0

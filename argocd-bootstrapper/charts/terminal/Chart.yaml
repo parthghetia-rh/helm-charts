@@ -1,0 +1,4 @@
+apiVersion: v2
+name: terminal
+description: terminal operator config
+version: 0.1.0
