@@ -1,5 +1,0 @@
-# values-prod.yaml
-namespaces:
-  - name: prod-namespace
-    labels:
-      environment: production

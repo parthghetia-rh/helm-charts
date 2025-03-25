@@ -1,8 +1,0 @@
-apiVersion: v2
-description: Generic chart for testing
-kubeVersion: '>=1.14.6'
-maintainers:
-- name: Parth Ghetia
-name: namespace-chart
-type: application
-version: 0.1.0

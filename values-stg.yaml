@@ -1,5 +1,0 @@
-# values-staging.yaml
-namespaces:
-  - name: staging-namespace
-    labels:
-      environment: staging
