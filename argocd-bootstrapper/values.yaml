@@ -2,7 +2,7 @@ openshift-gitops:
   enabled: true
   
 terminal:
-  enabled: true
+  enabled: false
   
 mtc:
   enabled: true
