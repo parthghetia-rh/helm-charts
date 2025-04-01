@@ -1,4 +1,4 @@
-openshift-gitops:
+openshiftGitops:
   enabled: true
   
 terminal:

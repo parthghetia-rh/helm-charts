@@ -1,3 +1,3 @@
 {{- define "global.shouldDeployMTC" -}}
-{{- if .Values.openshift-gitops.enabled }}true{{ else }}false{{ end }}
+{{- if .Values.openshiftGitops.enabled }}true{{ else }}false{{ end }}
 {{- end }}
