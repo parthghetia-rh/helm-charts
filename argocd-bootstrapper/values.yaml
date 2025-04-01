@@ -3,4 +3,7 @@ openshift-gitops:
   
 terminal:
   enabled: true
+  
+mtc:
+  enabled: true
 

@@ -31,3 +31,7 @@ dependencies:
     condition: terminal.enabled
     version: 0.1.0
     repository: "file://charts/terminal"
+  - name: mtc
+    condition: mtc.enabled
+    version: 0.1.0
+    repository: "file://charts/mtc"
