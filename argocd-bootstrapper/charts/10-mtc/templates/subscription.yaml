@@ -14,5 +14,6 @@ spec:
   installPlanApproval: Automatic
   name: mtc-operator
   source: redhat-operators
-  sourceNamespace: openshift-marketplace{{- end }}
+  sourceNamespace: openshift-marketplace
+
 {{- end }}
