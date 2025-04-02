@@ -1,0 +1,4 @@
+apiVersion: v2
+name: 01-secrets
+description: Secrets Configuration
+version: 0.1.0
