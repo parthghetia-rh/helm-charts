@@ -6,4 +6,5 @@ terminal:
   
 mtc:
   enabled: true
+  namespace: "parth-test"
 
