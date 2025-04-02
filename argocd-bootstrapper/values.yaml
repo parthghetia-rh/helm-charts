@@ -1,9 +1,12 @@
 01-secrets:
-  enabled : false
+  eso:
+    enabled: false
   
 03-certs:
-  enabled: false
+  certOperator:
+    enabled: false
   
 04-storage:
-  enabled: false
+  lvm:
+    enabled: false
 

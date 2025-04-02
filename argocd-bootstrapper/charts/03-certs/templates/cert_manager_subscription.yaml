@@ -1,3 +1,4 @@
+{{- if .Values.certOperator.enabled -}}
 apiVersion: operators.coreos.com/v1alpha1
 kind: Subscription
 metadata:
@@ -12,3 +13,4 @@ spec:
   name: openshift-cert-manager-operator
   source: redhat-operators
   sourceNamespace: openshift-marketplace
+{{- end }}

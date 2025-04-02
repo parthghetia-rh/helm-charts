@@ -1,3 +1,4 @@
+{{- if .Values.eso.enabled -}}
 apiVersion: operator.external-secrets.io/v1alpha1
 kind: OperatorConfig
 metadata:
@@ -17,3 +18,4 @@ spec:
     limits:
       cpu: 100m
       memory: 256Mi
+{{- end }}
