@@ -8,6 +8,7 @@ metadata:
     argocd.argoproj.io/sync-wave: "1201"
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
   name: rhacs-operator
+  namespace: stackrox
 spec:
   channel: stable
   installPlanApproval: Automatic
