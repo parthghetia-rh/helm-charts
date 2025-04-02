@@ -1,4 +1,4 @@
-{{- if .Values.certOperator.enabled -}}
+{{- if .Values.certManager.enabled -}}
 apiVersion: operators.coreos.com/v1alpha1
 kind: Subscription
 metadata:

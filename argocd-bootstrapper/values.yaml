@@ -1,10 +1,8 @@
-01-secrets:
-  eso:
-    enabled: false
+eso:
+  enabled: false
   
-03-certs:
-  certOperator:
-    enabled: false
+certManager:
+  enabled: false
   
 lvm:
   enabled: true
