@@ -2,7 +2,7 @@ openshiftGitops:
   enabled: true
   
 terminal:
-  enabled: false
+  enabled: true
   
 mtc:
   enabled: true
