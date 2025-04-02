@@ -15,7 +15,7 @@ mtc:
   enabled: true
 
 acm:
-  enabled: false
+  enabled: true
 
 rhoai:
   enabled: true
