@@ -21,4 +21,4 @@ rhoai:
   enabled: true
 
 acs:
-  enabled: true
+  enabled: false
