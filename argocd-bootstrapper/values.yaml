@@ -6,7 +6,6 @@
   certOperator:
     enabled: false
   
-04-storage:
-  lvm:
-    enabled: true
+lvm:
+  enabled: true
 
