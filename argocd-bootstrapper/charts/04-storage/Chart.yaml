@@ -1,0 +1,4 @@
+apiVersion: v2
+name: 04-certs
+description: Storage Configuration
+version: 0.1.0

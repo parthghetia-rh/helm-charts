@@ -1,4 +1,0 @@
-apiVersion: v2
-name: mtc
-description: mtc operator config
-version: 0.1.0
