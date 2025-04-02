@@ -1,5 +1,5 @@
-openshiftGitops:
-  enabled: true
+01-secrets:
+  enabled: false
   
 terminal:
   enabled: false
