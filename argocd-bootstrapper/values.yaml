@@ -1,8 +1,8 @@
 eso:
-  enabled: true
+  enabled: true # May Fail! Till you create a secret which will be used to create clusterSecretStore
   
 certManager:
-  enabled: true
+  enabled: true # Other resources not included, follow doc: https://developers.redhat.com/articles/2023/10/25/how-openshift-cert-manager-simplifies-cluster-certificates#introducing_cert_manager
   
 lvm:
   enabled: true
