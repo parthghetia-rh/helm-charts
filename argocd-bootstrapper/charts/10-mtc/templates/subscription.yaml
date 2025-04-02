@@ -15,5 +15,4 @@ spec:
   name: mtc-operator
   source: redhat-operators
   sourceNamespace: openshift-marketplace{{- end }}
-
 {{- end }}
