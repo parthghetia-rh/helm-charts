@@ -1,8 +1,8 @@
 eso:
-  enabled: false
+  enabled: true
   
 certManager:
-  enabled: false
+  enabled: true
   
 lvm:
   enabled: true
