@@ -6,6 +6,7 @@ certManager:
   
 lvm:
   enabled: true
+  devicePath: '/dev/disk/by-path/pci-0000:0b:00.0-nvme-2'
 
 terminalOperator:
   enabled: true

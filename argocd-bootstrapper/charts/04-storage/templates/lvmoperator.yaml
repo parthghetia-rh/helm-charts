@@ -28,7 +28,7 @@ spec:
       - default: true
         deviceSelector:
           paths:
-            - '/dev/disk/by-path/pci-0000:0b:00.0-nvme-2'
+            - {{ Values.lvm.devicePath }}
         fstype: xfs
         name: vg1
         thinPoolConfig:
