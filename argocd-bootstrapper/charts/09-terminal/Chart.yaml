@@ -1,0 +1,4 @@
+apiVersion: v2
+name: 09-terminal
+description: Web Terminal Operator
+version: 0.1.0

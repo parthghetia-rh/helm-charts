@@ -7,3 +7,6 @@ certManager:
 lvm:
   enabled: true
 
+terminalOperator
+  enabled: true
+
