@@ -22,16 +22,16 @@ version: 0.1.0
 # follow Semantic Versioning. They should reflect the version the application is using.
 # It is recommended to use it with quotes.
 appVersion: "1.16.0"
-dependencies:
-  - name: openshiftGitops
-    condition: openshiftGitops.enabled
-    version: 0.1.0
-    repository: "file://charts/openshift-gitops"
-  - name: terminal
-    condition: terminal.enabled
-    version: 0.1.0
-    repository: "file://charts/terminal"
-  - name: mtc
-    condition: mtc.enabled
-    version: 0.1.0
-    repository: "file://charts/mtc"
+# dependencies:
+#   - name: openshiftGitops
+#     condition: openshiftGitops.enabled
+#     version: 0.1.0
+#     repository: "file://charts/openshift-gitops"
+#   - name: terminal
+#     condition: terminal.enabled
+#     version: 0.1.0
+#     repository: "file://charts/terminal"
+#   - name: mtc
+#     condition: mtc.enabled
+#     version: 0.1.0
+#     repository: "file://charts/mtc"
