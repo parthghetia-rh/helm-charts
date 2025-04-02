@@ -1,3 +1,4 @@
-{{- define "global.shouldDeploy" -}}
-{{- if .Values.openshiftGitops.enabled }}true{{ else }}false{{ end }}
+{{- define "global .Chart.Name" -}}
+{{- $parentFolder := .Chart.Name -}}
+{{- if (index .Values $parentFolder ".enabled") }}true{{ else }}false{{ end }}
 {{- end }}
