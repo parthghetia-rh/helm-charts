@@ -6,7 +6,7 @@ metadata:
   namespace: service-mesh
   annotations:
        argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
-       argocd.argoproj.io/sync-wave: "1304"
+       argocd.argoproj.io/sync-wave: "1305"
 spec:
   version: v2.6
   policy:

@@ -11,7 +11,7 @@ metadata:
     app.kubernetes.io/created-by: rhods-operator
   annotations:
         argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
-        argocd.argoproj.io/sync-wave: "1305"
+        argocd.argoproj.io/sync-wave: "1390"
 spec:
   components:
     codeflare:
