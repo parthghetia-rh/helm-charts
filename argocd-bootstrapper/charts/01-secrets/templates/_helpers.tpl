@@ -1,4 +1,4 @@
-{{- define "global .Chart.Name" -}}
-{{- $parentFolder := .Chart.Name -}}
-{{- if .Values $parentFolder "enabled" }}true{{ else }}false{{ end }}
+{{- define "mychart.shouldDeploy" -}}
+{{- if .Values .Chart.Name.enabled }}true{{ else }}false{{ end }}
 {{- end }}
+

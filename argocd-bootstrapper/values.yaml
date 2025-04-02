@@ -1,10 +1,9 @@
 01-secrets:
+  enabled : false
+  
+03-certs:
   enabled: false
   
-terminal:
+04-storage:
   enabled: false
-  
-mtc:
-  enabled: true
-  namespace: "parth-test"
 
