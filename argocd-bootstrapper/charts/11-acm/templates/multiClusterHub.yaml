@@ -1,0 +1,11 @@
+{{- if .Values.acm.enabled -}}
+kind: MultiClusterHub
+apiVersion: operator.open-cluster-management.io/v1
+metadata:
+  name: multiclusterhub
+  namespace: open-cluster-management
+  annotations:
+      argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+      argocd.argoproj.io/sync-wave: "1101"
+spec: {}
+{{- end }}
