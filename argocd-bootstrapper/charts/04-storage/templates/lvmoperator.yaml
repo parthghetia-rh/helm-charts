@@ -1,4 +1,4 @@
-{{- if .Values.lvm.enabled -}}
+{{- if .Values.04-storage.lvm.enabled -}}
 apiVersion: operators.coreos.com/v1alpha1
 kind: Subscription
 metadata:
