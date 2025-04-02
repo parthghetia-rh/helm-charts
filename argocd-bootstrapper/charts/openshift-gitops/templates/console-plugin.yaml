@@ -1,4 +1,3 @@
-{{- if .Values.enabled }}
 apiVersion: console.openshift.io/v1
 kind: ConsolePlugin
 metadata:
@@ -25,4 +24,3 @@ spec:
   #       namespace: gitops-admin-plugin
   #       port: 8443
   #     type: Service
-{{- end }}
