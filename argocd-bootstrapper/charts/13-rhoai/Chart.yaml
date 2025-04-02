@@ -1,0 +1,4 @@
+apiVersion: v2
+name: 13-rhoai
+description: RHOAI
+version: 0.1.0
