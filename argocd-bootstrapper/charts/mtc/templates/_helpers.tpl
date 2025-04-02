@@ -1,3 +1,4 @@
-{{- define "global.shouldDeployGitops" -}}
-{{- if .Values.mtc.enabled }}true{{ else }}false{{ end }}
+{{- $parentFolder := .Chart.Name -}}
+{{- define "global.$parentFolder" -}}
+{{- if .Values.$parentFolder.enabled }}true{{ else }}false{{ end }}
 {{- end }}
