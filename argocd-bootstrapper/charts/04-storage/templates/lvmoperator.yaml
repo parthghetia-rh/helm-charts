@@ -28,7 +28,7 @@ spec:
       - default: true
         deviceSelector:
           paths:
-            - {{ Values.lvm.devicePath }}
+            - {{ .Values.lvm.devicePath }}
         fstype: xfs
         name: vg1
         thinPoolConfig:
