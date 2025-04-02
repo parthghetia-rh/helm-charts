@@ -1,4 +1,3 @@
 {{- $parentFolder := .Chart.Name -}}
-{{- define "global.$parentFolder" -}}
-{{- if .Values.$parentFolder.enabled }}true{{ else }}false{{ end }}
-{{- end }}
+{{- define "global $parentFolder" -}}
+{{- if (index .Values $parentFolder "enabled") }}true{{ else }}false{{ end }}{{- end }}
