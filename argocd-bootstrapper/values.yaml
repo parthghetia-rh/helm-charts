@@ -17,3 +17,9 @@ mtc:
 acm:
   enabled: false
 
+rhoai:
+  enabled: false
+
+acs:
+  enabled: false
+

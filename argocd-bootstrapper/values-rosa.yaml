@@ -19,3 +19,6 @@ acm:
 
 rhoai:
   enabled: true
+
+acs:
+  enabled: true

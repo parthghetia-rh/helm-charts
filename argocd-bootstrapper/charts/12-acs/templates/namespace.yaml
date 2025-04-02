@@ -1,0 +1,10 @@
+{{- if .Values.acs.enabled -}}
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: stackrox
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/sync-wave: "1200"
+
+{{- end }}
