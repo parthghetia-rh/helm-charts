@@ -1,0 +1,15 @@
+{{- if .Values.mtc.enabled -}}
+apiVersion: operators.coreos.com/v1
+kind: OperatorGroup
+metadata:
+  name: openshift-migration-og
+  namespace: openshift-migration
+  annotations:
+        argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+        argocd.argoproj.io/sync-wave: "801"
+spec:
+  targetNamespaces:
+    - openshift-migration
+  upgradeStrategy: Default
+
+{{- end }}
