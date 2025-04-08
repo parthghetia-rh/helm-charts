@@ -1,0 +1,15 @@
+{{- if .Values.acm.enabled -}}
+apiVersion: operators.coreos.com/v1
+kind: OperatorGroup
+metadata:
+  name: acm-og
+  namespace: open-cluster-management
+  annotations:
+        argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+        argocd.argoproj.io/sync-wave: "1102"
+spec:
+  targetNamespaces:
+    - open-cluster-management
+  upgradeStrategy: Default
+
+{{- end }}
