@@ -1,0 +1,4 @@
+apiVersion: v2
+name: multiple-secrets
+description: multiple-secrets-generator-helm-chart
+version: 0.1.0
