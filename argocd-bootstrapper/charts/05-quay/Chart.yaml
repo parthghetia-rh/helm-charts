@@ -1,0 +1,4 @@
+apiVersion: v2
+name: 05-quay
+description: Quay Configuration
+version: 0.1.0
