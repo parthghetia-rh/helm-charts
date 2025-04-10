@@ -1,0 +1,9 @@
+{{- if .Values.quay.enabled -}}
+apiVersion: project.openshift.io/v1
+kind: Project
+metadata:
+  name: quay-registry
+  annotations:
+      argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+      argocd.argoproj.io/sync-wave: "500"
+{{- end }}

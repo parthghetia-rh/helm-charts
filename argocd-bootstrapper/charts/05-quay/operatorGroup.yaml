@@ -1,0 +1,14 @@
+{{- if .Values.quay.enabled -}}
+apiVersion: operators.coreos.com/v1
+kind: OperatorGroup
+metadata:
+  name: quay-operator-group
+  namespace: quay-registry
+  annotations:
+      argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+      argocd.argoproj.io/sync-wave: "502"
+spec:
+  targetNamespaces:
+    - quay-registry
+  upgradeStrategy: Default
+{{- end }}
