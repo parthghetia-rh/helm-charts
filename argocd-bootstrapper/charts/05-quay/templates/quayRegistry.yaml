@@ -16,7 +16,7 @@ spec:
     - kind: postgres
       managed: true
     - kind: clair
-      managed: true
+      managed: false
     - kind: redis
       managed: true
     - kind: horizontalpodautoscaler
@@ -30,6 +30,6 @@ spec:
     - kind: tls
       managed: true
     - kind: clairpostgres
-      managed: true
+      managed: false
   configBundleSecret: init-config-bundle-secret
 {{- end }}
