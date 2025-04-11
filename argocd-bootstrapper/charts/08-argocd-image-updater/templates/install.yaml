@@ -288,3 +288,30 @@ spec:
       - emptyDir: {}
         name: tmp
 {{- end }}
+
+#sample application manifest to use, simply add the annotations as below to the applicatio manifest and as long as the repo is public it will go through. Check argo cd image updater pod for logs
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   annotations:
+#     argocd-image-updater.argoproj.io/image-list: 'innovative-quay-quay-registry.apps.parth-rosa-acm.orfh.p1.openshiftapps.com/quayadmin/pipeline-demo:latest'
+#     argocd-image-updater.argoproj.io/update-strategy: digest
+#     argocd-image-updater.argoproj.io/write-back-method: argocd
+#   name: test-app
+#   namespace: openshift-gitops
+#   resourceVersion: '8343457'
+#   uid: bba315bf-2ac8-4112-b1d1-85e766291012
+# spec:
+#   destination:
+#     namespace: openshift-gitops
+#     server: 'https://kubernetes.default.svc'
+#   project: default
+#   source:
+#     kustomize:
+#       images:
+#         - 'innovative-quay-quay-registry.apps.parth-rosa-acm.orfh.p1.openshiftapps.com/quayadmin/pipeline-demo:latest@sha256:517397326d1fcdf6e0ce117a935b61ba6fe026a5e60fb915ad80977d7dfdb585'
+#     path: k8s
+#     repoURL: 'https://github.com/parthghetia-rh/sample-apps'
+#     targetRevision: HEAD
+#   syncPolicy:
+#     automated: {}
