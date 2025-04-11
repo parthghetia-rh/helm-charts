@@ -1,0 +1,4 @@
+apiVersion: v2
+name: 08-argocd-image-updater
+description: Argocd-image-updater Configuration
+version: 0.1.0
