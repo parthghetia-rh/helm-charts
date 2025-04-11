@@ -1,4 +1,4 @@
-{{- if .Values.image-updater.enabled -}}
+{{- if .Values.imageUpdater.enabled -}}
 apiVersion: v1
 kind: ServiceAccount
 metadata:

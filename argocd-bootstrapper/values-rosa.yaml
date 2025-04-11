@@ -11,7 +11,7 @@ lvm:
 quay:
   enabled: true
 
-image-updater: #enable argocd image updater
+imageUpdater: #enable argocd image updater
   enabled: true
 
 terminalOperator:
