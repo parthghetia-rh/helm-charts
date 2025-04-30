@@ -31,6 +31,9 @@ kind: Task
 metadata:
   name: update-deployment
   namespace: pipelines-demo
+  annotations:
+     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+     argocd.argoproj.io/sync-wave: "802"
 spec:
   params:
     - name: deployment
