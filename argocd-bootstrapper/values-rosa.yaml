@@ -9,7 +9,7 @@ lvm:
   devicePath: '/dev/disk/by-path/pci-0000:0b:00.0-nvme-2'
 
 quay:
-  enabled: true
+  enabled: false
 
 imageUpdater: #enable argocd image updater
   enabled: true
@@ -21,10 +21,10 @@ mtc:
   enabled: true
 
 acm:
-  enabled: true
+  enabled: false
 
 rhoai:
   enabled: true
 
 acs:
-  enabled: true
+  enabled: false
