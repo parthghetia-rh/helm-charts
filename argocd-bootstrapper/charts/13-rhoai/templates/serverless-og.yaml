@@ -4,6 +4,10 @@ kind: OperatorGroup
 metadata:
   name: serverless-operators
   namespace: openshift-serverless
+  annotations:
+    argocd.argoproj.io/sync-wave: "1300"
+  labels:
+    argocd.argoproj.io/managed-by: openshift-gitops
 spec: {}
 
 {{- end }}
