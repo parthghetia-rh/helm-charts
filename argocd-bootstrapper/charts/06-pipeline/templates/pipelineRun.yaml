@@ -1,0 +1,36 @@
+apiVersion: tekton.dev/v1
+kind: PipelineRun
+metadata:
+  generateName: build-deploy-api-pipelinerun-
+  annotations:
+    argocd.argoproj.io/sync-options: Replace=true
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+  namespace: pipelines-demo
+spec:
+  params:
+    - name: IMAGE
+      value: 'image-registry.openshift-image-registry.svc:5000/pipelines-demo/python-sample'
+    - name: deployment-name
+      value: python-sample
+    - name: git-url
+      value: 'https://github.com/parthghetia-rh/sample-apps.git'
+  pipelineRef:
+    name: build-and-deploy
+  taskRunTemplate:
+    serviceAccountName: pipeline
+  timeouts:
+    pipeline: 1h0m0s
+  workspaces:
+    - name: shared-workspace
+      volumeClaimTemplate:
+        apiVersion: v1
+        kind: PersistentVolumeClaim
+        metadata:
+          creationTimestamp: null
+          name: source-pvc
+        spec:
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 500Mi
