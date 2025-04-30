@@ -4,6 +4,9 @@ kind: Service
 metadata:
   name: wordpress-mysql
   labels:
+    argocd.argoproj.io/managed-by: openshift-gitops
+    argocd.argoproj.io/sync-wave: "1402"
+  labels:
     app: wordpress
 spec:
   ports:
@@ -18,6 +21,9 @@ kind: PersistentVolumeClaim
 metadata:
   name: mysql-pv-claim
   labels:
+    argocd.argoproj.io/managed-by: openshift-gitops
+    argocd.argoproj.io/sync-wave: "1402"
+  labels:
     app: wordpress
 spec:
   accessModes:
@@ -30,6 +36,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: wordpress-mysql
+  labels:
+    argocd.argoproj.io/managed-by: openshift-gitops
+    argocd.argoproj.io/sync-wave: "1402"
   labels:
     app: wordpress
 spec:   
