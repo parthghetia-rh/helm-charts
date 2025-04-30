@@ -1,0 +1,141 @@
+{{- if .Values.pipeline.enabled -}}
+apiVersion: tekton.dev/v1
+kind: Pipeline
+metadata:
+  name: build-and-deploy
+  namespace: pipelines-demo
+  annotations:
+     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+     argocd.argoproj.io/sync-wave: "806"
+spec:
+  workspaces:
+  - name: shared-workspace
+  - name: rox-api-token-auth
+
+  params:
+  - name: deployment-name
+    type: string
+    description: name of the deployment to be patched
+  - name: git-url
+    type: string
+    description: url of the git repo for the code of deployment
+  - name: git-revision
+    type: string
+    description: revision to be used from repo of the code for deployment
+    default: main
+  - name: IMAGE
+    type: string
+    description: image to be build from the code
+  - name: rox_central_endoint
+    type: string
+    description: The address:port tuple for RHACS Stackrox Central.
+    default: central.stackrox.svc:443
+  - name: rox_token_file
+    type: string
+    description: The location of the ROX API token file
+    default: /rox-api-token-auth/rox_api_token
+  - name: rox_image
+    type: string
+    description: The Red Hat Advanced Cluster Security container image
+    default: quay.io/stackrox-io/roxctl:4.4.2
+
+  tasks:
+  - name: fetch-repository
+    taskRef:
+      name: git-clone
+      kind: ClusterTask
+    workspaces:
+    - name: output
+      workspace: shared-workspace
+    params:
+    - name: url
+      value: $(params.git-url)
+    - name: subdirectory
+      value: ""
+    - name: deleteExisting
+      value: "true"
+    - name: revision
+      value: $(params.git-revision)
+
+  - name: police-deployment
+    taskRef:
+      name: rhacs-deployment-check
+      kind: Task
+    workspaces:
+    - name: source
+      workspace: shared-workspace
+    - name: rox-api-token-auth
+      workspace: rox-api-token-auth
+    params:
+    - name: deployment
+      value: $(params.deployment-name)
+    - name: insecure-skip-tls-verify
+      value: "true"
+    - name: rox_token_file
+      value: $(params.rox_token_file)
+    - name: rox_image
+      value: $(params.rox_image)
+    runAfter:
+    - fetch-repository
+
+  - name: build-image
+    taskRef:
+      name: buildah
+      kind: ClusterTask
+    params:
+    - name: IMAGE
+      value: $(params.IMAGE)
+    workspaces:
+    - name: source
+      workspace: shared-workspace
+    runAfter:
+    - fetch-repository
+  - name: apply-manifests
+    taskRef:
+      name: apply-manifests
+    workspaces:
+    - name: source
+      workspace: shared-workspace
+    runAfter:
+    - build-image
+
+  - name: scan-image
+    taskRef:
+      name: rhacs-image-scan
+      kind: Task
+    workspaces:
+    - name: rox-api-token-auth
+      workspace: rox-api-token-auth
+    params:
+    - name: image
+      value: "$(params.IMAGE)@$(tasks.build-image.results.IMAGE_DIGEST)"
+    - name: insecure-skip-tls-verify
+      value: "true"
+    - name: rox_token_file
+      value: $(params.rox_token_file)
+    - name: rox_image
+      value: $(params.rox_image)
+    runAfter:
+    - build-image
+
+  - name: update-deployment
+    taskRef:
+      name: update-deployment
+    params:
+    - name: deployment
+      value: $(params.deployment-name)
+    - name: IMAGE
+      value: $(params.IMAGE)
+    runAfter:
+    - apply-manifests
+
+# tkn pipeline start build-and-deploy \
+#     --prefix-name build-deploy-api-pipelinerun \
+#     -w name=shared-workspace,volumeClaimTemplateFile=https://raw.githubusercontent.com/openshift/pipelines-
+# tutorial/master/01_pipeline/03_persistent_volume_claim.yaml \
+#     -p deployment-name=python-sample \     
+#     -p git-url=https://github.com/parthghetia-rh/sample-apps.git \
+#     -p IMAGE=image-registry.openshift-image-registry.svc:5000/pipelines-demo/python-sample \
+#     --use-param-defaults
+
+{{- end }}

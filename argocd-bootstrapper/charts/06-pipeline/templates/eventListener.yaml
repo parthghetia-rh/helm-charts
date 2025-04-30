@@ -1,0 +1,18 @@
+{{- if .Values.pipeline.enabled -}}
+apiVersion: triggers.tekton.dev/v1beta1
+kind: EventListener
+metadata:
+  name: pipelines-demo-el
+  namespace: pipelines-demo
+  annotations:
+     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+     argocd.argoproj.io/sync-wave: "804"
+spec:
+  triggers:
+    - name: python-sample
+      bindings:
+        - ref: python-sample
+          kind: TriggerBinding
+      template:
+        ref: python-sample
+{{- end }}

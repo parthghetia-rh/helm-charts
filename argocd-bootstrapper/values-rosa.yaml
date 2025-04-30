@@ -8,6 +8,9 @@ lvm:
   enabled: false
   devicePath: '/dev/disk/by-path/pci-0000:0b:00.0-nvme-2'
 
+pipeline:
+  enabled: true
+
 quay:
   enabled: false
 

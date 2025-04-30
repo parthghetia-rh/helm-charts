@@ -1,0 +1,21 @@
+{{- if .Values.pipeline.enabled -}}
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  labels:
+    app: python-sample
+    eventlistener: python-sample
+  name: el-python-sample
+  namespace: pipelines-demo
+  annotations:
+     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+     argocd.argoproj.io/sync-wave: "805"
+spec:
+  port:
+    targetPort: http-listener
+  tls:
+    termination: edge
+  to:
+    kind: Service
+    name: el-pipelines-demo-el
+{{- end }}
