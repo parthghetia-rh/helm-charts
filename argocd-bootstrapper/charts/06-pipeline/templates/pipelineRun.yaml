@@ -2,9 +2,6 @@ apiVersion: tekton.dev/v1
 kind: PipelineRun
 metadata:
   generateName: build-deploy-api-pipelinerun-
-  annotations:
-    argocd.argoproj.io/sync-options: Replace=true
-    argocd.argoproj.io/compare-options: IgnoreExtraneous
   namespace: pipelines-demo
 spec:
   params:
