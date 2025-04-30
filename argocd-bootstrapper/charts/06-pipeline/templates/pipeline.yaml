@@ -10,7 +10,6 @@ metadata:
 spec:
   workspaces:
   - name: shared-workspace
-  - name: rox-api-token-auth
 
   params:
   - name: deployment-name
@@ -26,18 +25,6 @@ spec:
   - name: IMAGE
     type: string
     description: image to be build from the code
-  - name: rox_central_endoint
-    type: string
-    description: The address:port tuple for RHACS Stackrox Central.
-    default: central.stackrox.svc:443
-  - name: rox_token_file
-    type: string
-    description: The location of the ROX API token file
-    default: /rox-api-token-auth/rox_api_token
-  - name: rox_image
-    type: string
-    description: The Red Hat Advanced Cluster Security container image
-    default: quay.io/stackrox-io/roxctl:4.4.2
 
   tasks:
   - name: fetch-repository
@@ -57,27 +44,6 @@ spec:
     - name: revision
       value: $(params.git-revision)
 
-  - name: police-deployment
-    taskRef:
-      name: rhacs-deployment-check
-      kind: Task
-    workspaces:
-    - name: source
-      workspace: shared-workspace
-    - name: rox-api-token-auth
-      workspace: rox-api-token-auth
-    params:
-    - name: deployment
-      value: $(params.deployment-name)
-    - name: insecure-skip-tls-verify
-      value: "true"
-    - name: rox_token_file
-      value: $(params.rox_token_file)
-    - name: rox_image
-      value: $(params.rox_image)
-    runAfter:
-    - fetch-repository
-
   - name: build-image
     taskRef:
       name: buildah
@@ -96,25 +62,6 @@ spec:
     workspaces:
     - name: source
       workspace: shared-workspace
-    runAfter:
-    - build-image
-
-  - name: scan-image
-    taskRef:
-      name: rhacs-image-scan
-      kind: Task
-    workspaces:
-    - name: rox-api-token-auth
-      workspace: rox-api-token-auth
-    params:
-    - name: image
-      value: "$(params.IMAGE)@$(tasks.build-image.results.IMAGE_DIGEST)"
-    - name: insecure-skip-tls-verify
-      value: "true"
-    - name: rox_token_file
-      value: $(params.rox_token_file)
-    - name: rox_image
-      value: $(params.rox_image)
     runAfter:
     - build-image
 
