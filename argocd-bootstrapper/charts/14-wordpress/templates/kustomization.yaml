@@ -1,0 +1,16 @@
+{{- if .Values.wordpress.enabled -}}
+secretGenerator:
+- name: mysql-pass
+  literals:
+  - password=YOUR_PASSWORD
+resources:
+  - mysql-deployment.yaml
+  - wordpress-deployment.yaml
+
+# oc new-app mariadb-ephemeral
+# oc new-app php~https://github.com/wordpress/wordpress
+# oc expose svc/wordpress - give it a while
+
+# sample python app
+# oc new-app https://github.com/OpenShiftDemos/os-sample-python.git
+{{- end }}
