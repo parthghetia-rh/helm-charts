@@ -33,4 +33,4 @@ acs:
   enabled: false
 
 wordpress:
-  enabled: true # Sample app, not included in the chart, but you can use it to test the argocd bootstrapper
+  enabled: false # Sample app, not included in the chart, but you can use it to test the argocd bootstrapper
