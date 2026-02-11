@@ -35,13 +35,13 @@ spec:
     - name: output
       workspace: shared-workspace
     params:
-    - name: URL
+    - name: url
       value: $(params.git-url)
     - name: subdirectory
       value: ""
     - name: deleteExisting
       value: "true"
-    - name: REVISION
+    - name: revision
       value: $(params.git-revision)
 
   - name: build-image
