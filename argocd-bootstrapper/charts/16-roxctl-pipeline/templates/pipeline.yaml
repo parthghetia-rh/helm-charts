@@ -110,7 +110,7 @@ spec:
     - name: source
       workspace: shared-workspace
     runAfter:
-    - fetch-repository
+    - police-deployment
   # scan image for vulns using RHACS
   - name: scan-image
     taskRef:
