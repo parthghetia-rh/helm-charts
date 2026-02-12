@@ -43,7 +43,7 @@ spec:
     params:
     - name: URL
       value: $(params.git-url)
-    - name: subdirectory
+    - name: SUBDIRECTORY
       value: ""
     - name: deleteExisting
       value: "true"
