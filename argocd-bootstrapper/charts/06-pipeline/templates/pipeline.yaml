@@ -29,8 +29,14 @@ spec:
   tasks:
   - name: fetch-repository
     taskRef:
-      name: git-clone
-      kind: ClusterTask
+      resolver: cluster
+      params:
+      - name: kind
+        value: task
+      - name: name
+        value: git-clone
+      - name: namespace
+        value: openshift-pipelines # Default location for Red Hat tasks
     workspaces:
     - name: output
       workspace: shared-workspace
@@ -46,8 +52,14 @@ spec:
 
   - name: build-image
     taskRef:
-      name: buildah
-      kind: ClusterTask
+      resolver: cluster
+      params:
+      - name: kind
+        value: task
+      - name: name
+        value: buildah
+      - name: namespace
+        value: openshift-pipelines
     params:
     - name: IMAGE
       value: $(params.IMAGE)
@@ -56,9 +68,11 @@ spec:
       workspace: shared-workspace
     runAfter:
     - fetch-repository
+
   - name: apply-manifests
     taskRef:
       name: apply-manifests
+      kind: Task # Looks for a Task in the current namespace 'pipelines-demo'
     workspaces:
     - name: source
       workspace: shared-workspace
@@ -68,6 +82,7 @@ spec:
   - name: update-deployment
     taskRef:
       name: update-deployment
+      kind: Task
     params:
     - name: deployment
       value: $(params.deployment-name)
