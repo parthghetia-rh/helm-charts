@@ -1,0 +1,21 @@
+{{- if .Values.roxctlPipeline.enabled -}}
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  labels:
+    app: python-sample
+    eventlistener: python-sample
+  name: el-python-sample
+  namespace: rox-ctl-pipeline
+  annotations:
+     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+     argocd.argoproj.io/sync-wave: "1605"
+spec:
+  port:
+    targetPort: http-listener
+  tls:
+    termination: edge
+  to:
+    kind: Service
+    name: el-pipelines-demo-el
+{{- end }}

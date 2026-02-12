@@ -1,0 +1,18 @@
+{{- if .Values.roxctlPipeline.enabled -}}
+apiVersion: triggers.tekton.dev/v1beta1
+kind: TriggerBinding
+metadata:
+  name: python-sample
+  namespace: rox-ctl-pipeline
+  annotations:
+     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+     argocd.argoproj.io/sync-wave: "1603"
+spec:
+  params:
+  - name: git-repo-url
+    value: $(body.repository.url)
+  - name: git-repo-name
+    value: $(body.repository.name)
+  - name: git-revision
+    value: $(body.head_commit.id)
+{{- end }}

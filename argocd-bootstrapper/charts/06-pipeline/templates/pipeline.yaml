@@ -36,7 +36,7 @@ spec:
       - name: name
         value: git-clone
       - name: namespace
-        value: openshift-pipelines # Default location for Red Hat tasks
+        value: openshift-pipelines
     workspaces:
     - name: output
       workspace: shared-workspace
@@ -72,7 +72,7 @@ spec:
   - name: apply-manifests
     taskRef:
       name: apply-manifests
-      kind: Task # Looks for a Task in the current namespace 'pipelines-demo'
+      kind: Task
     workspaces:
     - name: source
       workspace: shared-workspace

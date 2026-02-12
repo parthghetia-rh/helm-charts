@@ -1,0 +1,18 @@
+{{- if .Values.roxctlPipeline.enabled -}}
+apiVersion: triggers.tekton.dev/v1beta1
+kind: EventListener
+metadata:
+  name: pipelines-demo-el
+  namespace: rox-ctl-pipeline
+  annotations:
+     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+     argocd.argoproj.io/sync-wave: "1604"
+spec:
+  triggers:
+    - name: python-sample
+      bindings:
+        - ref: python-sample
+          kind: TriggerBinding
+      template:
+        ref: python-sample
+{{- end }}
